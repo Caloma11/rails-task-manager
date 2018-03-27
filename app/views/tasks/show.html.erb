@@ -1,0 +1,22 @@
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+
+<h1>  <%= @task.title %> </h1>
+<p> <%= @task.details %></p>
+
+  <% if @task.completed %>
+    <label><input type="checkbox" checked="true">This task is completed.</label>
+    <br>
+  <% else %>
+    <label><input type="checkbox">This task is not completed yet.</label>
+    <br>
+  <% end %>
+   <a href="<%= @task.id  %>/edit">Edit</a>
+
+
+
+<%= link_to "Delete", task_path(@task),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>

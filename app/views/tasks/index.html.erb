@@ -1,0 +1,32 @@
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+
+
+
+
+<h1>My Tasks</h1>
+
+<%@tasks.each do |task|%>
+  <% if task.completed %>
+    <label><input type="checkbox" checked="true"><a href="tasks/<%= task.id  %>"><%= task.title %></a></label>
+      <%= link_to "•  X", task_path(task),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+
+    <br>
+  <% else %>
+    <label><input type="checkbox"><a href="tasks/<%= task.id  %>"><%= task.title %></a></label>
+      <%= link_to "•  X", task_path(task),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+    <br>
+  <% end %>
+<% end %>
+
+
+<a href="tasks/new">Create new task</a>
+
+
+
